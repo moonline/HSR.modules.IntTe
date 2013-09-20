@@ -1,0 +1,3 @@
+[submodule "toolsAndCommands"]
+	path = toolsAndCommands
+	url = git@github.com:moonline/toolsAndCommands.git
