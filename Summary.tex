@@ -120,8 +120,61 @@ urlcolor=black
 	
 	
 	\se{Servlets}
+		\sse{Schnittstellen}
+			\stdImg{v1.4}{javax.servlet}
+			\stdImg{v1.5}{javax.servlet.http}
+			
+		\sse{Konfiguration}
+			\stdImg{v1.6}{Konfiguration: web.xml}
+			
+		\sse{Request}
+			\stdImg{v1.3}{Request URL}
+			\stdImg{v1.7}{Aufruf Mechanismus}
+			\stdImg{v1.8}{HttpServletRequest}
+			\stdImg{v1.9}{Datenzugriff in Rohform}
+			
+		\sse{Exception Handling}
+			\stdImg{v1.10}{Exception Handling über Error Code oder Exception type (individuelle Error page)}
 		
-	
+		\sse{Servlet Livecycle}
+			\stdImg{v1.11}{Servlet Live Cycle}
+			\stdImg{v1.12}{Live Cycle}
+			
+			\expl{Instanzvariablen}{Müssen Thread save sein, weil das Servlet multithreaded programmiert werden könnte und damit parallele Request abarbeitung möglich ist. Besser: Instanzen im Application Scope speichern, wo alle Servlets zugreifen können.}
+			
+			\expl{destroy()}{Destroy so implementieren, das es einen Flag setzt. In der Service Methode beende meinen Betrieb ordentlich und so schnell wie möglich. Nach bestimmter Zeit wird das Servlet abgeschossen werden.}
+		
+		\sse{Scopes}
+			\stdImg{v1.13}{Servlet Context}
+			
+			
+		\sse{Session Tracking}
+			\stdImg{v1.14}{Grundlegendes zu Sessions}
+			\stdImg{v1.15}{Aufbau einer Session}
+			\stdImg{v1.16}{Session beenden}
+			\stdImg{v1.17}{Sesion Tracking}
+			
+		\sse{Cookies}
+			\stdImg{v1.18}{Arbeiten mit Cookies}
+			\stdImg{v1.19}{Cookie empfangen}
+			
+		\sse{Request Dispatching (Redirecting)}
+			\stdImg{v1.20}{}
+			\expl{Forward \& include}{Bei forward komme ich nicht mehr zurück, beim Include bleibe ich beim aktuellen Request und binde andern Content ein.}	
+			
+			
+		\sse{Request Filter}
+			\stdImg{v1.21}{}
+			\stdImg{v1.22}{}
+			\stdImg{v1.23}{Verändern von Responses}
+			\stdImg{v1.24}{Beispiel Responsewrapper}
+		
+		
+			
+
+
+
+
 
 
 \end{document}
