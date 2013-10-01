@@ -53,8 +53,52 @@ Skizzieren Sie den Lebenszyklus eines Servlet Containers auf.
 Was sind der Servlet Context und der Context Path?
 
 **1.1.12.**
-Was sind Sessions? Wie setzten sie Sessions mit Servlets um?
+Was sind Sessions? Wie setzten sie Sessions mit Servlets um? Wie beenden Sie eine Session?
+
+**1.1.13.**
+Wozu können Sie Cookies nutzen? Wie erzeugen Sie Cookies, setzen Attibute und versenden Cookies? Wie Empfangen Sie Cookies?
+
+**1.1.14.**
+Welche Aufgabe übernimmt der Request Dispatcher? Wie können Sie einen Request weiterleiten oder teilweise delegieren?
+
+**1.1.15.**
+Was können Sie mit Filter anstellen? Wie mappen Sie Filter? Wie programmieren Sie einen Flter?
+Wie können Sie eine Response manipulieren?
+
 
 
 Clientseitige Technologien
 ==========================
+
+HTML
+----
+**2.1.1.**
+Was sind Tags, was sind Attribute?
+
+CSS
+---
+**2.2.1.**
+Auf welche Arten können Sie Stylesheets in HTML Dokumente einbinden?
+
+**2.2.2.**
+Was sind Selektoren?
+
+Javascript
+----------
+**2.3.1.**
+Was bedeutet es, das JavaScipt Sandboxed läuft?
+
+**2.3.2.**
+Wie sind in Javascript Objekte intern aufgebaut (Konzeptuell)? Was ist das Prototype Konzept? Welche Konsequenzen hat Prototyping in Bezug auf Klassen, Vererbung, Overloading, Sichtbarkeit und static Typechecking bei einer interpretierten Sprache wie Javascript?
+
+**2.3.3.**
+Was ist das DOM? Was ist der Render Tree?
+
+**2.3.4.**
+Warum ist beim Traversieren des DOMs besonder auf White Spaces acht zu geben?
+
+**2.3.5.**
+Was sind Eventhandler? Wozu dienen sie?
+
+JQuery
+......
