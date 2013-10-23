@@ -212,3 +212,101 @@ Warum sollte jede Funktion einen return besitzen? Was ist wenn nicht?
 **2.3.3.16.**
 Wie funktionieren in Javascript Parameterlisten?
 
+
+Ajax
+----
+**2.4.0.1.**
+Was ist Ajax? Welche Verschiedenen Technologien werden unter Ajax zusammengefasst? Welche Art von Daten kann mit welcher Technologie übertragen werden?
+
+**2.4.0.2.**
+Wie funktioniert ein XHR Request? Machen Sie ein Beispiel. Was sind die Bedingungen für einen Cross-Domain Request?
+
+**2.4.0.3.**
+Welche Zustände gibt es beim XHR Request?
+
+**2.4.0.4.**
+Machen Sie einen XHR Request Beispiel für Get und Post sowie für synchrone und asynchrone kommunikation.
+
+**2.4.0.5.**
+Was ist On-Demand JS? Wie funktioniert es?
+
+**2.4.0.6.**
+Was ist JSONP? Wie funktioniert es?
+
+**2.4.0.7.**
+Warum wird häufig JSON XML Daten vorgezogen? Nennen Sie zwei Gründe.
+
+**2.4.0.8.**
+Wie wird aus den übertragenen Daten wieder HTML, das dem Benutzer angezeigt werden kann? Nennen Sie dies für jede mögliche Art von Übertragungsformat.
+
+**2.4.0.9.**
+Was ist XSS? Wo lauern XSS Schlupflöcher und wie können Sie XSS wirksam eindämmen?
+
+**2.4.0.10.**
+Was ist Client Seitiges Templating? Erklären Sie die Grundidee von Handlebars und AjaxPages.
+
+**2.4.0.11.**
+Wie funktioniert Ajax mit jQuery? Wie machen Sie die Unterscheidung zwischen HXR, JSONP, ... ?
+
+Server Push
+...........
+**2.4.1.1.**
+Was ist Serverpush? Welche Probleme gibt es heute?
+
+**2.4.1.2.**
+Welche Technologien gibt es um diese Probleme zu lösen?
+
+
+REST
+====
+**3.0.1.**
+Was ist REST?
+
+**3.0.2.**
+Was soll REST besser umsetzen (konsequenter) als SOAP?
+
+**3.0.3.**
+Erklären Sie die vier Level von REST. Was sind Ressourcen?
+
+**3.0.4.**
+Machen Sie zu folgenden Szenarien je ein Beispiel inkl. Aufrufdomain und korrekter Aufrufmethode (Übertragungsformat XML):
+
+- von einem Service eine Liste mit Produkten abrufen
+- von einem Service Informationen über ein bestimmtes Produkt abrufen
+- auf einem Service ein bestimmtes Produkt löschen
+- auf einem Service ein neues Produkt anlegen
+- auf einem Service ein bestimmtes Produkt bearbeiten
+
+
+**3.0.5.**
+Was bedeutet HAETOAS? Zweck?
+
+**3.0.6.**
+Warum sollten GET Requests nie Veränderungen auf dem Server vornehmen? Wie müssen Sie verändernde Requests gestalten?
+
+**3.0.7.**
+Warum ist bei REST eine statuslose Kommunikation bewusst gewollt? Wo liegen die Vorteile?
+
+**3.0.8.**
+Welche zwei Möglichkeiten gibt es trotz Statuslosigkeit einen Warenkorb umzusetzen?
+
+
+JSF
+===
+**4.0.1.**
+Was sind JSF?
+
+**4.0.2.**
+Skizzieren Sie das MVC Pattern für Webanwendungen auf.
+
+**4.0.3.**
+Was sind JSF Komponenten?
+
+**4.0.4.**
+Was sind Beans? Warum werden für das JSF Templating Beans benötigt?
+
+**4.0.5.**
+Wie funktioniert das Templating bei JSF grundsätzlich?
+
+
+
