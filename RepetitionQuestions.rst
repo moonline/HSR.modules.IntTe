@@ -414,3 +414,60 @@ Wie registrieren Sie EventListener?
 
 Internationalisierung
 ---------------------
+**4.6.1.**
+Wie binden Sie über ein Resource Bundle Übersetzungen ein?
+
+**4.6.2.**
+Wie übersteuern Sie die browsereinstellungen?
+
+**4.6.3.**
+Wie greifen Sie in einer Bean auf das Bundle zu?
+
+
+Ajax
+----
+**4.7.1.**
+Was ist ajax und wie funktioniert es?
+
+**4.7.2.**
+Wie aktualisieren Sie eine Ausgabe mit ajax, nachdem ein Feld geändert wurde?
+
+**4.7.3.**
+Welche Events gibt es bei Ajax?
+
+**4.7.4.**
+Wie verwenden Sie Ajax über die Javascript API?
+
+
+Web Architektur
+===============
+**5.0.1.**
+Erklären Sie die grundlegende Architektur einer Webapplikation.
+
+**5.0.2.**
+Zeigen Sie die Unterschiede auf zwischen einer Client zentrierten Architktur und einer Server zentrierten Architektur.
+
+**5.0.3.**
+Was sind die Hauptmerkmale von "Action/Request based" und "Component based" Web Frameworks? Wo liegen die wichtigsten Unterschiede?
+
+
+Patterns
+--------
+**5.1.1.**
+Erklären Sie die folgenden Patterns:
+
+- Template View: 
+	- Prinzip
+	- two Step View
+	- Umsetzung in PHP, ASP.net, JSF
+	- Expression Language
+- MVC im Web Bereich:
+	- Grundkonzept
+	- Umsetzung in Struts, Spring MVC, Ruby on Rails und JSF
+- Front Controller
+- Page Controller
+
+**5.1.2.**
+Nennen Sie die wichtigsten ROCCA Architektur Richtlinien
+
+
