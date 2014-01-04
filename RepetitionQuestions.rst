@@ -118,7 +118,7 @@ JQuery
 Wie funktionieren jQuery Selektoren?
 
 **2.3.2.2.**
-Wann erhalten Sie in jQuery eine Liste und wann direkt das gesuchte Objekt? Wie greifen Sie in der List auf das erste Element zu? Wie iterieren Sie über die Element?
+Wann erhalten Sie in jQuery eine Liste und wann direkt das gesuchte Objekt? Wie greifen Sie in der List auf das erste Element zu? Wie iterieren Sie über die Elemente?
 
 **2.3.2.3.**
 Wie verhindern Sie bei jQuery Konflikte mit andern Frameworks, die ebenfalls den Dollar verwenden?
@@ -282,11 +282,11 @@ Erklären Sie die vier Level von REST. Was sind Ressourcen?
 **3.0.4.**
 Machen Sie zu folgenden Szenarien je ein Beispiel inkl. Aufrufdomain und korrekter Aufrufmethode (Übertragungsformat XML):
 
-- von einem Service eine Liste mit Produkten abrufen
-- von einem Service Informationen über ein bestimmtes Produkt abrufen
-- auf einem Service ein bestimmtes Produkt löschen
-- auf einem Service ein neues Produkt anlegen
-- auf einem Service ein bestimmtes Produkt bearbeiten
+a) von einem Service eine Liste mit Produkten abrufen
+b) von einem Service Informationen über ein bestimmtes Produkt abrufen
+c) auf einem Service ein bestimmtes Produkt löschen
+d) auf einem Service ein neues Produkt anlegen
+e) auf einem Service ein bestimmtes Produkt bearbeiten
 
 
 **3.0.5.**
@@ -369,10 +369,11 @@ Auf welche Objekte können Sie mit Expression Language zugreifen?
 
 **4.2.3.**
 Erklären Sie die Scopes
-	- @RequestScoped
-	- @ViewScoped
-	- @SessionScoped
-	- @ApplicationScoped
+
+a) @RequestScoped
+b) @ViewScoped
+c) @SessionScoped
+d) @ApplicationScoped
 	
 **4.2.4.**
 Wie können Sie Expression Language innerhalb von Java Beans einsetzen?
