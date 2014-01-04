@@ -20,7 +20,7 @@ Repetitionsfragen: https://github.com/moonline/HSR.modules.IntTe/blob/master/Rep
 
 :: 
 	
-	 .-------WebComp-----------------.
+	 .-------WebContainer------------.
 	 |                               |
 	--> HTTP S. Req. --> WebComp.    |
 	 |                   /    |      |
