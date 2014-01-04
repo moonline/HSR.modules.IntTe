@@ -1,6 +1,14 @@
-===============================
+============================
 HS13 IntTe Repetitionsfragen
-===============================
+============================
+
+
+
+Antworten zu den Repetitionsfragen
+==================================
+Falls vorhanden befinden sich diese im GitHub Repository. Ergänzungen oder ganze Antwortensets sind jederzeit herzlich willkommen. https://github.com/moonline/HSR.modules.IntTe
+
+
 
 Symbolerklärung
 ===============
@@ -9,6 +17,8 @@ Wissensfragen des Dozenten (Slides) für die Prüfung
 
 **[EW]**
 Wissensfrage, die über den Stoff der Vorlesung hinaus geht.
+
+
 
 Java Webtechnologien
 ====================
@@ -23,6 +33,7 @@ Was ist ein "Web Module"? Was enthält es alles?
 
 **1.0.4.**
 Was sind "Java Server Faces"?
+
 
 Java Servlets
 -------------
@@ -268,8 +279,10 @@ Was ist Serverpush? Welche Probleme gibt es heute?
 Welche Technologien gibt es um diese Probleme zu lösen?
 
 
+
 REST
 ====
+
 **3.0.1.**
 Was ist REST?
 
@@ -451,6 +464,7 @@ Welche Events gibt es bei Ajax?
 Wie verwenden Sie Ajax über die Javascript API?
 
 
+
 Web Architektur
 ===============
 **5.0.1.**
@@ -483,6 +497,7 @@ Erklären Sie die folgenden Patterns:
 Nennen Sie die wichtigsten ROCCA Architektur Richtlinien
 
 
+
 Client Architektur Frameworks
 =============================
 **6.0.1.**
@@ -499,6 +514,7 @@ Wie funktioniert Templating mit DotJS?
 
 **6.0.5.**
 Welchen Vorteil bringt Backbone? Was kann man damit machen?
+
 
 
 Plugin Technologien
@@ -572,6 +588,7 @@ GWT bietet unterschiedlichen Code für verschiedene Browser an. Warum ist die vo
 [DP] Welche Vorteile bietet Cross-Compilation gegener Browser Plugins?
 
 
+
 Performance Optimierung
 =======================
 **8.0.1.**
@@ -599,6 +616,7 @@ Warum ist es grundsätzlich schlecht für die Performance, wenn die Scripte vor 
 
 **8.0.6.**
 Nennen Sie einige weitere Performance Tipps aus dem Buch "High Performance Javascript", die ind er Vorlesung behandelt wurden.
+
 
 
 Typescript (Vortrag Microsoft)
