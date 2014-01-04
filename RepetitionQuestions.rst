@@ -2,6 +2,13 @@
 HS13 IntTe Repetitionsfragen
 ===============================
 
+Symbolerklärung
+===============
+**[DP]**
+Wissensfragen des Dozenten (Slides) für die Prüfung
+
+**[EW]**
+Wissensfrage, die über den Stoff der Vorlesung hinaus geht.
 
 Java Webtechnologien
 ====================
@@ -83,6 +90,7 @@ Auf welche Arten können Sie Stylesheets in HTML Dokumente einbinden?
 **2.2.2.**
 Was sind Selektoren?
 
+
 Javascript
 ----------
 
@@ -103,6 +111,7 @@ Warum ist beim Traversieren des DOMs besonder auf White Spaces acht zu geben?
 **2.3.1.5.**
 Was sind Eventhandler? Wozu dienen sie?
 
+
 JQuery
 ......
 **2.3.2.1.**
@@ -116,6 +125,7 @@ Wie verhindern Sie bei jQuery Konflikte mit andern Frameworks, die ebenfalls den
 
 **2.3.2.4.**
 Wie können Sie mit jQuery Attribute setzen und auslesen?
+
 
 Vertiefung
 ..........
@@ -247,6 +257,7 @@ Was ist Client Seitiges Templating? Erklären Sie die Grundidee von Handlebars u
 
 **2.4.0.11.**
 Wie funktioniert Ajax mit jQuery? Wie machen Sie die Unterscheidung zwischen HXR, JSONP, ... ?
+
 
 Server Push
 ...........
@@ -470,4 +481,133 @@ Erklären Sie die folgenden Patterns:
 **5.1.2.**
 Nennen Sie die wichtigsten ROCCA Architektur Richtlinien
 
+
+Client Architektur Frameworks
+=============================
+**6.0.1.**
+Welchen Vorteil bringen Bootstrap und Modernizer dem Entwickler? Was kann man damit machen?
+
+**6.0.2.**
+Welchen Vorteil bringt jQuery Mobile dem Entwickler? Was kann man damit machen?
+
+**6.0.3.**
+Erklären Sie das MVVM Pattern? Welches sind Domain Objekte, welches Views?
+
+**6.0.4.**
+Wie funktioniert Templating mit DotJS?
+
+**6.0.5.**
+Welchen Vorteil bringt Backbone? Was kann man damit machen?
+
+
+Plugin Technologien
+===================
+**7.0.1.**
+Nennen Sie 6 alternative Möglichkeiten zur WebApp-Entwicklung mit Javascript.
+
+
+Browser Plugins
+---------------
+**7.1.1.**
+Nennen Sie Vor- und Nachteile von Java Applets.
+
+**7.1.2.**
+Was passiert sobald, sobald die Browserhersteller die NPAPI abschalten.
+
+**7.1.3.**
+Erklären Sie das Vorgehen des Browsers, wenn ein Benutzer ein Plugin nicht installiert hat, der Browser das Plugin jedoch benutzen möchte.
+
+
+Silverlight
+-----------
+**7.2.1.**
+Welchen Vorteil bietet Silverlight gegenüber andern Plugin Technologien? Welche Grundidee steckt dahinter?
+
+**7.2.2.**
+Mit welchen Problemen haben Silverlight Plugins zu kämpfen?
+
+**7.2.3.**
+Welche Architekturvarianten lässt Silverlight zu?
+
+**7.3.4.**
+[DP] Welche Vorteile bietet eine homogene Server/Client Technologie allgemeint?
+
+**7.3.5.**
+[DP] Für welche Anwendungen ist Silverlight sicher nicht geeignet?
+
+**7.3.6.**
+[DP] Wie lässt sich aufbauend auf einer MS SQL Datenbank sehr schnell eine 3-Tier Silverlight Anwendung entwickeln? Wo wird validiert und wie?
+
+Flash
+-----
+**7.3.1.**
+Welche Möglichkeiten bietet Flash? Warum wird es Flash noch längere Zeit geben obwohl die NPAPI demnächst abgeschaltet wird?
+
+**7.3.2.**
+Welche Möglichkeiten gibt es ohne grosse manuelle Eingriffe eine Flash Applikation zu migrieren?
+
+
+Cross-Compilation
+-----------------
+**7.4.1.**
+Was bietet GWT?
+
+**7.4.2.**
+Wie weit bietet GWT GUI Unterstützung?
+
+**7.4.3.**
+Inwieweit ist mit GWT RPC möglich?
+
+**7.4.4.**
+Welche Einschränkungen gibt es bei GWT gegenüber normalen Java Desktop UI Applikationen? Welche Probleme gibt es?
+
+**7.4.5.**
+Was ist die Google App Engine?
+
+**7.4.5.**
+GWT bietet unterschiedlichen Code für verschiedene Browser an. Warum ist die von GWT benutzte Variante trotzdem effizienter als die von jQuery benutzte?
+
+**7.4.6.**
+[DP] Welche Vorteile bietet Cross-Compilation gegener Browser Plugins?
+
+
+Performance Optimierung
+=======================
+**8.0.1.**
+Skizzieren Sie mit einem Ablaufdiagramm auf, wie und in welcher Reihenfolge das laden und rendern von Inhalten und Scripts abläuft.
+
+**8.0.2.**
+Was passiert, wenn Sie über eine Schleife nacheinander mehrere Elemente in den DOM einfügen? Ist dies empfehlenswert? Wenn nicht, was wäre eine bessere Vorgehensweise?
+
+**8.0.3.**
+Wo (Header, Body Top, Body Bottom) sollten Sie die folgenden Elemente platzieren, um möglichst gute Siteperformance zu erhalten?
+
+a) CSS Dateien
+b) LESS CSS Dateien, die anschliessend vom LESS Parser zu CSS kompiliert werden (keine Abhänigkeiten zu den Dateien in a)
+c) LESS Parser Script, das die LESS Dateien kompiliert
+d) Die Scripts, die ihre Domain- und Controller Logik beinhalten, abhängig davon ob sie 
+	I) die Domain Logik gleich instanzieren im main Script und die Dateien deshalb bereits geladen sein müssen
+	II) ihr main Script über ein Framework wie require.js oder ähnlichen die Dateien der Domain Logik erst nächlädt, sobald die Logik verwendet wird
+e) Ihr main script
+
+**8.0.4.**
+[EW] Welche Alternativen Möglichkeiten als die Positionierung haben Sie um zu verhindern, das Skripte vor dem Content gerendert werden?
+
+**8.0.5.**
+Warum ist es grundsätzlich schlecht für die Performance, wenn die Scripte vor dem Content geparst werden?
+
+**8.0.6.**
+Nennen Sie einige weitere Performance Tipps aus dem Buch "High Performance Javascript", die ind er Vorlesung behandelt wurden.
+
+
+Typescript (Vortrag Microsoft)
+==============================
+**9.0.1.**
+Was ist Typescript?
+
+**9.0.2.**
+Wie unterscheidet sich Typescript grundsätzlich von Dart, der von Google entwickelten Javascript Alternative?
+
+**9.0.3.**
+Wo liegt der Hauptvorteil von Typescript gegenüber Javascript?
 
