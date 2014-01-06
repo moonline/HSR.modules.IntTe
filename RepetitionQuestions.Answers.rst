@@ -183,8 +183,8 @@ Die Seite error.xhtml enthält dann den benutzerdefinierten Error-Content.
 **1.1.10 Servlet Lebenszyklus**
 
 1) init: Web Container lädt Servlet Klasse und instanziiert sie um anschliessend init() aufzurufen
-3) service: Für jeden Client Request wird service() aufgerufen
-4) destroy: Aufruf von destroy(), unload der Klasse
+2) service: Für jeden Client Request wird service() aufgerufen
+3) destroy: Aufruf von destroy(), unload der Klasse
 
 
 **1.1.11 Servlet Context**
@@ -433,5 +433,277 @@ Operationen wie val() oder attr(), die etwas zurückliefern arbeiten jeweils mit
 	var attributeValue = $('div.vip p').attr('src'); /* read attribute src */
 	$('div.vip p').attr('src', 'image.png'); /* set attribute src */
 
+
+2.3.3 Vertiefung
+................
+
+**2.3.3.1 Datentypen, Objekte, Konstruktoren**
+
+Datentypen
+	* number (Floatingpoint): Zahlen, NaN
+	* string
+	* bool
+Objekte sind
+	* Funktionen
+	* Arrays
+	* Date
+	* Regex
+	* Null
+	* Eigene Typen
+Konstruktoren
+	mit new aufgerufene Funktionen erzeugen neue Objekte
+	
+**2.3.3.2 Prototype**
+
+Objekte erben direkt von ander Objekten.
+
+
+Java
+
+	::
+		
+		class Vehicle <-- class Car extends Vehicle
+			|                         |
+			v                         v
+		concrete vehicle A          concrete Car B
+	
+	
+Javascript
+
+	::
+	
+		vehicle A <---.        Car B
+		               `--- B.prototype
+			
+			
+Prototypemethoden
+	* Werden im Prototypobjekt gespeichert
+	* Können nicht auf Variablen im Konstruktor zugreifen und somit nicht auf über diesen Weg angelegte private Variablen
+Objektmethoden
+	* Werden in der Klassenbeschreibung (Template) gespeichert
+	* Besitzen Zugriff auf private Member
+	
+**3.4.4.3 Scoping**
+
+* Variablen (var) werden angehoben und sind in der umfassenden Funktion gültig. Auch wenn sich noch Blöcke dazwischen befinden.
+* Ohne var definierte Variablen sind global gültig
+
+**3.4.4.4 this**
+
+This zeigt in Javascript immer auf die umgebende ausführende Funktion.
+
+.. code-block:: javascript
+
+	var f = function() {
+		this.name = "abc";
+	}
+	
+	var a = new f();
+	// this zeigt auf das Objekt a
+	console.log(a.name); // "abc"
+	
+
+Wird eine Funktion als Parameter übergeben, so gilt beim Ausführen die Funktion, in der die aufgerufene ausgeführt wird als umgebende.
+
+.. code-block:: javascript
+
+	var c = function(func) {
+		func();
+	}
+	
+	c(f); // this von f zeigt auf den globalen space, da dieser die Funktion c umgibt
+	
+	
+**3.4.4.5 Kapselung**
+
+Sichtbarkeitsattribute gibt es nicht. Private Attribute können nur über das Scoping erreicht werden, jedoch mit einigen Nachteilen:
+
+.. code-block:: javascript
+
+	function Container(param) {
+		var secret = 3;
+		
+		this.getSecret = function() {
+			return secret;
+		}
+	}
+
+Nachteile
+	* Private Methoden können nicht im Prototype abgelegt werden und werden deshalb in jedes Objekt kopiert
+	* Mit Prototype-Methoden können nicht auf solche Variablen zugegriffen werden
+	
+**3.4.4.6 Closures**
+
+Closures sind Variablen, die Javascript an Funktionen anhängt (unsichtbar), sodass sie noch verfügbar sind, selbst wenn die umgebende Funktion mit ihren Variablen längst nicht mehr exisitert.
+
+.. code-block:: javascript
+
+	var getNumbers = (function() {
+		var numbers = [2,3,4];
+		
+		return function(index) {
+			return numbers[index];
+		}
+	})();
+	
+	
+Wird getNumbers(2) aufgerufen, so wird 3 zurückgegeben, obwohl die äussere Funktion schon längst abgeräumt wurde. die Variable numbers wurde für die innere Funktion in einer Closure gespeichert.
+
+**2.3.3.7 Overloading**
+
+Overloading gibt es in JS nicht. Erneut definierte Methoden mit gleichen Namen überschreiben verherig definierte trotzt unterschiedlicher Signatur.
+
+**2.3.3.8 Anonyme Funktionen**
+
+Dienen dazu, eine Funktion zu definieren und gleich auszuführen. Werden vor Allem zur Kapselung eingesetzt, weil darin verwendete Variablen (var) ausserhalb nicht sichtbar sind.
+
+**2.3.3.9 System Objects**
+
+In JS kann jedes Objekt überschrieben werden. Auch sämmtliche vom System definierte wie window oder navigator. Dies kann dazu benutzt werden, beim Testing ein eigenes Test Environment zu bauen und es anstelle der Systemobjekte zu benutzen.
+
+**2.3.3.10 Eval**
+
+Eval() führt Strings als JS Code aus. Damit ist es möglich zur Laufzeit Programmcode zusammenzubauen und auszuführen. Entsprechend gefährlich ist diese Methode und sollte im Normalfall nicht verwendet werden.
+
+**2.3.3.11 Namespacing**
+
+Mit Objekthierarchien	
+
+	.. code-block:: javascript
+	
+		window.controller = {}:
+		
+		window.controller.CarController = function() { /* ... */ }
+		window.controller.ReservationController = function() { /* ... */ }
+		
+		window.domain = {}; windo.domain.model = {};
+		window.domain.model.Car = function() { /* ... */ }
+		window.domain.model.Reservation = function() { /* ... */ }
+	
+Übere eine Library, z.B. require.js
+	Domain/Model/Car.js:
+	
+	.. code-block:: javascript
+	
+		define(function() {
+			'use strict';
+
+			var Car = function() { /* ... */ };
+			return Car;
+		});
+		
+		
+	Main.js:
+	
+	.. code-block:: javascript
+	
+		(function() {
+			require(["Domain/Model/Car"], function(Car) {
+				'use strict';
+
+				var car = new Car();	
+			});
+		})();
+		
+		
+Die zweite Variante ist zu bevorzugen, da die Includes nicht von Hand nachgeführt werden müssen und nur wirklich benötigte Klassen eingebunden werden.
+
+
+**2.3.3.12**
+
+a) Ja, da das effektive Objekt erst mit new erstellt wird und dann Vehicle exisitert.
+b) 	* Car, car, Vehicle: global Space, da keine umgebende Funktion
+	* drive(), turnLightOn(): Vehicle
+c) Nur wenn es Getter oder Setter gibt
+d) 	* car drive
+	* lights ar active
+	* undefined
+	* Car2
+	* siehe h
+		
+e) Zuerst wird die Funktion im lokalen Objekt gesucht, dann im Prototype, dann in dessen Prototyp, ...
+f) Für Car selbst nicht, sie wird jedoch automatisch aufgerufen, da der Interpreter auch im Prototyp sucht
+g) getName kann nicht auf die variable name zugreifen, da diese nach aussen nicht sichtbar ist. Darum wird beim ersten Mal undefined ausgegeben.
+h) .. code-block:: javascript
+	
+	Car {
+		prototype: Vehicle, 
+		drive: drive: function () { return "car drive"; }, 
+		name: "Car2", 
+		getName: function
+		__proto__: Object
+	}
+		
+i) Funktion wird als Funktion aufgerufen und nicht als Konstruktur -> Da die Funktion keinen Rückgabewert besitzt, wird die globale Variable Car mit undefined belegt.
+j) .. code-block:: javascript
+	
+	window.App = {
+		Model: {
+			Domain: {}
+		}
+	}; 
+	
+	window.App.Model.Domain.Car = function() { /* ... */ };
+	window.App.Model.Domain.Vehicle = function() { /* ... */ };
+		
+k) .. code-block:: javascript
+
+	window.App.Controller = {};
+	window.App.Controller.VehicleController = (function() {
+		car = new Car(); // i
+		console.log(car.drive()); // e
+		console.log(car.turnLightOn());
+		console.log(car.getName()); // g
+		car.name = "Car2";
+		console.log(car.getName()); // g
+		console.log(car); // h
+	})();
+	
+l) .. code-block:: javascript
+
+	window.onload = function() {
+		// define VehicleController above without the self extracting function wrapper
+		window.App.Controller.VehicleController(); 
+	};
+	
+m) Weil die Methoden in jedes Objekt kopiert werden.
+		
+**2.3.3.13 JSON**
+
+Ist eine Strukturierte Textdarstellung, in die Objekte abgebildet werden können (JSON.parse(), JSON.stringify()). Es werden allerdings nur die Daten der Objekte abgelegt, keine Funktionen bei JSON.stringify(). 
+
+JSON kann einerseits als Datenformat zur Kommunikation oder Speicherung verwendet werden, andererseits können innerhalb von JS auch Objekte in JSON Notation definiert werden:
+
+.. code-block:: javascript
+
+	var car = {
+		name: "Alpha",
+		turnLightOn: function() { /* ... */ }
+	}
+	
+**2.3.3.14 new Object()**
+
+Es wird ein Objekt angelegt, das von Object erbt und ansonsten leer ist.
+
+**2.3.3.15 return**
+
+Weil sonst undefined zurückgegeben wird.
+
+**2.3.3.16 Parameterlisten**
+
+In Javascript werden alle Parameter in die variable "arguments" gesteckt die wie ein Array ausgelesen werden kann.
+
+
+2.4 Ajax
+--------
+
+**2.4.0.1 Ajax**
+
+Asynchrones Nachladen von Daten mit Javascript.
+
+* XHR XmlHttpRequest (Asynchrones Laden von HTML/XML)
+* On Demand JS (Nachladen von Javascript)
+* Iframe nachladen
+* Image nachladen
 
 
