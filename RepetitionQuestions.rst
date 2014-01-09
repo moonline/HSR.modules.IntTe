@@ -360,7 +360,7 @@ Wie wird der Component Tree erzeugt?
 Wozu dienen composition und component?
 
 **4.1.5.**
-Wie werden Resources im Tempate angesprochen?
+Wie werden Resources im Template angesprochen?
 
 **4.1.6.**
 Welche Attribute besitzen alle Komponenten?

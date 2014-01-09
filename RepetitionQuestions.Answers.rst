@@ -706,4 +706,522 @@ Asynchrones Nachladen von Daten mit Javascript.
 * Iframe nachladen
 * Image nachladen
 
+**2.4.0.2 XHR Request**
+
+.. code-block:: javascript
+
+	var req = new XMLHttpRequest();
+	req.onreadystate = function() {
+		if (req.readyState == 4) {
+			if (req.status == 200 || req.status == 304) {
+				alert(req.responseText);
+			}
+		}
+	};
+	req.open('get', 'url', false);
+	req.send(null);
+
+	
+Für Cross-Domain XHR muss der Server dies erlauben (Allow im Header).
+	
+**2.4.0.3 Zustände**
+
+* uninitialized: Request wurde erst definiert, noch nicht geöffnet
+* open: Request wurde initialisiert aber noch nicht abgesetzt
+* sent: Request wurde abgesetzt
+* receiving: Antwortteile sind verfügbar
+* completet: Request ist abgeschlossen
+
+**2.4.0.4 Beispiel**
+
+
+
+**2.4.0.5 On-Demand JS**
+
+Neuer Script Tag wird in Seite eingefügt und dadurch JS Code geladen. Der JS Code kann auch Daten in JSON Form enthalten.
+
+**2.4.0.6 JSONP**
+
+Das mit On-Demand JS geladene Skript enthält einen Methodenaufruf mit den angeforderten Daten.
+
+.. code-block:: javascript
+
+	loadPersonCallback({ name: "Anton Brauer", age: 27 });
+	
+	
+Das Skript wird ausgeführt, sobald es geladen wurde und ruft damit die Callbackfunktion auf.
+
+**2.4.0.7 JSON vs XML**
+
+JSON kann direkt als Javascript Objekte interpretiert werden und ist einfacher zu transportieren mit On-Demand JS. XML müsste in String gepackt werden.
+
+
+**2.4.0.8 Ajax -> HTML**
+
+* Als Text übertragenes HTML wird mit innerHTML eingefügt
+* als JSON übertragene Daten werden zu HTML zusammengebaut und durch DOM Manipulation eingefügt
+
+**2.4.0.9 XSS**
+
+Cross-Site-Scripting. Eine Lücke erlaubt es einem Benutzer ein Script einzuschleusen, das bei einem andern Benutzer ausgeführt wird. Damit kann z.B. die Session, Zugangsdaten oder Trackinginformation gestohlen werden.
+
+Massnahmen:
+* CSP: Mit Content Security Policy Skriptausführungen beschränken -> sehr effektiv
+* Escaping von sämmtlichen Eingabeparametern (HTML Charachter replacement) -> kein absoluter schutz
+* Parsen von Eingabedaten nach script, scriptinhalten, onclick, etc. -> kein absoluter schutz
+
+**2.4.0.10 Clientseitiges Templating**
+
+Das HTML Template enthält Platzhalter, die durch eine JS Templatengine mit Daten gefüllt werden.
+
+**2.4.0.11 Ajax mit jQuery**
+
+* $.ajax({ url, type, callback, successfunction })
+* Type wird über dataType gesteuert
+
+
+2.4.1 Server Push
+.................
+
+**2.4.1.1 Server Push**
+
+* Senden von Daten an den Client durch den Server.
+* Problem: HTTP Verbindung muss von Client geöffnet werden und stirbt auch gleich wieder
+* Push Server->Client ist nicht vorgesehen
+
+**2.4.1.2 Lösungen**
+
+* Polling
+* Long Polling, HTTP Streaming (COMET)
+* WebSockets, EventSource (HTML5)
+* Socket.io, SignalR (Libraries)
+
+
+
+3 REST
+======
+
+**3.0.1 REST**
+
+* REpresentational State Transfer
+* Resourcen werden über eine eindeutige URL angesprochen
+* HTTP Statuscodes werden verwendet
+
+**3.0.2 REST vs SOAP**
+
+* HTTP Status Codes nutzen
+* Weniger aufgebläht
+* AUch andere Formate als XML möglich
+
+**3.0.3 REST Level**
+
+* 0: Es gibt Service Endpoints, die auf Anfragen Antworten liefern (ähnlich wie SOAP), keine Resourcen, alles POST
+* 1: Es gibt Resourcen -> Daten auf dem Server sind über die URL adressierbar (domain.tld/car/1234), alles POST
+* 2: Korrekte Verwendung von POST, GET und HTTP Return Codes
+* 3: HAETOAS, Der Server schickt in der Antwort Links mit, was mit den Daten gemacht werden kann (Der Server kann intern die Links ändern, ohne das die Clients damit Probleme bekommen), Entwickler verstehen API besser
+
+**3.0.4 Beispiel**
+
+
+
+**3.0.5 HAETOAS**
+
+* Hypertext As The Engine Of Application State
+* Der Server liefert jeweils eine List mit möglichen Operationen. Der Clien verwendet diese URLs. So kann der Server sie ohne Probleme anpassen.
+
+**3.0.6 GET**
+
+Für verändernde Requests wurde POST, PUT oder DELETE geschaffen. GET verspricht nichts auf dem Server zu verändern. Jeder GET Resquest auf die gleiche URL sollte den gleichen Inhalt zurückiefern.
+
+**3.0.7 Statuslose Kommunikation**
+
+* geringere Kopplung zwischen Client und Server
+* Server und Client können zwischen Kommunikation Verbindung oder sich selbst wechseln ohne Probleme
+* Anfragen können auf mehrere unabhängige Server verteilt werden.
+
+**3.0.8 Warenkörbe**
+
+* Warenkorb als eigene Rescource (Status als Resourcenzustand)
+* Status Clientseitig halten
+
+
+4 JSF
+=====
+
+**4.0.1 JSF**
+
+Java Server Faces: Komponenten basiertes Framework zur serverseitigen Erzeugung von Websites
+
+**4.0.2 MVC Web**
+
+::
+
+	.-------------------.
+	|                   |
+	|      View         |  Client Side
+	|                   |
+	'-------------------'
+	
+	---------------------------------------------------------
+	
+	.-------------------.
+	|                   |
+	|    Controller     |  Server Side
+	|                   |
+	'-------------------'
+	
+	.-------------------.
+	|                   |
+	|      Model        |
+	|                   |
+	'-------------------'
+	
+	
+**4.0.3 JSF Komponenten**
+
+Funktionsbibliotheken, die z.B. Kalender ermöglichen.
+
+**4.0.4 Beans**
+
+Klassen die für jedes Property getter und setter besitzen. JSF benötigt diese, um die Platzhalter im Template mit deren Daten zu füllen.
+
+**4.0.5 Templating**
+
+Das XHTML Template besitzt Platzhalter, in die JSF Daten aus Model und Beans einfüllt und anschliessend die Page rendert.
+
+**4.0.6 JSF Lebenszyklus**
+
+1) Restore View: Komponentenbaum erstellen oder wiederherstellen
+2) Apply Request Values: Parameter aus Request extrahieren und in entsprechende Komponenten übernehmen
+3) Process Validations: Übergabevariablen der Komponenten werden in interne Darstellung überführt und validiert, anschliessend als Local Value der Komponenten gesetzt -> Validierunsfehlermeldung: Live Cylce springt direkt zu 4
+4) Update Model Values: Komponentenbaum wird durchlaufen und aktualisiert (Local Values werden ind Backing Beans kopiert)
+5) Invoke Application: Ausführen von Actions
+6) Render Response: Komponentenbaum durchlaufen und rendern, Antwortszustand für zukünftige Requests speichern
+
+**4.0.7 Siehe 4.0.6**
+
+**4.0.8 immediate**
+
+Damit lässt sich der Zyklus anpassen. immediate=true bei Steuerkomponenten lässt Actions in "Aply Request Value" Phase ausführen, z.B. für Abbruch bei falschen Parametern
+
+**4.0.9 Facelets**
+
+Standard View Description Language für JSF.
+
+* XHTML
+* Tags von Tag Libraries
+* Platzhalter (Expresion Language EL)
+
+
+4.1 UI Komponenten
+------------------
+
+**4.1.1 JSF UI Komponenten**
+
+konfigurierbares, wiederverwendbares Element
+
+**4.1.2 UI Komponenten Model**
+
+Komponent enthält Klassen für Komponenten, Rendering, 	EventListening, Datenkonvertierung, Validierung
+
+**4.1.3 Component Tree**
+
+Template wird geparst -> Für Component Tags Komponenten erzeugt und als Baum aufgebaut
+
+**4.1.4 composition & component**
+
+Erstellen von Untertemplates, die als Komponenten verwendet werden können (Wiedervernwendbarkeit)
+
+**4.1.5 Resources**
+
+über #{resource[...]} kann auf Rescourcen im resources Folder zugegriffen werden.
+
+**4.1.6 Attribute**
+
+
+
+**4.1.7 Fehlermeldungen**
+
+h:message und h:messages rendern Fehlermeldungen für Komponenten oder die ganze Seite.
+
+**4.1.8 Render-Kit**
+
+Das Render Kit erlaubt das rendern von beliebigem Code. In JSF wird standardmässig das HTML Render Kit verwendet.
+
+Erlaubt Web Autoren das Anpassen der Ausgabe ohne wursteln im Komponentencode. -> Komponenten sollten nie innerhalb der Komponenten gerendert werden.
+
+
+4.2 Expression Language
+-----------------------
+
+**4.2.1 EL**
+
+EL ist eine Sprache zum Zugriff auf Backing Beans. 
+
+.. code-block:: HTML
+
+	<h1>#{customer.name}</h1>
+	
+	
+**4.2.2 Zugriff**
+
+* Beans
+* Collections
+* Enumeration Types
+* Implizite Objekte wie Scope Inhalte, Params, Context, ...
+
+**4.2.3 Scopes**
+
+a) @RequestScoped: Lebt nur für die Dauer eines Requestes
+b) @ViewScoped: Lebt in Session solange die gleiche Seite verwendet wird
+c) @SessionScoped: Lebt für die Dauer einer Benutzersession
+d) @ApplicationScoped: Lebt solange App lebt, ist für alle Benutzer gleiche
+
+**4.2.4 EL innerhalb Klassen**
+
+.. code-block:: java
+
+	value = "#{resource[...]}";
+	
+
+**4.2.5 EL Methodenaufruf**
+
+.. code-block:: HTML
+
+	<f:link action="#{customer.save(customer.id)}" >save</f:link>
+	
+	
+**4.2.6 implizite Objekte**
+
+Objekte wie Scope Inhalte, Params, Context, ... . Stellen Informationen über das Environment und den Request zur Verfügung.
+
+
+4.3 Converter
+-------------
+
+**4.3.1 Convert**
+
+Werden verwendet zur Konvertierung von Daten zwischen localView der Bean und der Presentationview.
+
+.. code-block:: HTML
+
+	<h:outputText value="#cashier.shipDate}">
+		<f:convertDateTime pattern="dd.MM.yyyy" />
+	</h:outputText>
+	
+
+**4.3.2 Converter Sichten**
+
+* Model View (local Value)
+* Presentation View
+
+**4.3.3 custom Converter**
+
+* Regisitrierung mit Converter-Block im web-xml
+* aufruf mit converter="MyConstomConverter" in einer Komponente
+* Klasse implementieren, die Converterinterface implementiert (getAsObject(), getAsString()).
+
+
+4.4 Validatoren
+---------------
+
+**4.4.1 Validatoren**
+
+Validatoren dienen zur Validierung von Eingabedaten. Z.B. min / max bei RangeInput. Es gibt Standardvalidatoren für Wertlängen, Ranges, Required-Fields, Regex, ... .
+
+**4.4.2 Cutom Validator**
+
+* Registirierung im web-xml mit einem Validator-block
+* Verwenden als Custom Tag innrhalb eines Input Feldes.
+* Implementieren einer Klasse, die das ValidatorInterface implementiert (validate()).
+
+**4.4.3 Bean Validation**
+
+Validierung im Template ist teilweise redundant, da sie in den Beans wieder vorkommt. Deshalb ist Validierung innerhalb der Bean Klassen mit Annotations besser. -> Constraints
+
+
+4.5 EventListener
+-----------------
+
+**4.5.1 EventListener**
+
+EventListener regieren auf Events im UI, in der Applikation oder im Model.
+
+**4.5.2 Begriffe**
+
+EventObject
+	Komponente, die den Event auslöst
+Value Change Event
+	Wert einer Input Komponente hat sich verändert.
+Action Event
+	Eine Action wurde ausgelöst
+Data Model Event
+	Event im Datenmodel, z.B. erhöhen eines Wertes.
+
+**4.5.3 Event Handling Lebenszyklus**
+
+1) Events werden in Queue eingereiht
+2) Am Ende jeder JSF Zyklus Phase werden die Eventlistener aufgerufen
+3) EventHandler können duch Context.renderResponse() oder Contect.responseComplete() den Zyklus abkürzen
+
+**5.4.4 EventListener registrieren**
+
+Mit MethodExpression in valueChangeListener-Attribut oder einem KindTag f:valueChangeListener
+
+
+4.6 Internationalisierung
+-------------------------
+
+**4.6.1 Bundle Einbinden**
+
+Im web-xml locale-config und resource-bundle Blöcke einfügen.
+
+**4.6.2 Browsereinstellungen übersteuern**
+
+Mit f:view locale="..."
+
+**4.6.3 Bundlezugriff in Bean**
+
+.. code-block:: java
+
+	ResourceBundle.getBundle(
+		context.getApplication().getMessageBundle(), 
+		context.getViewRoot().getLocale()
+	);
+
+
+4.7 Ajax
+--------
+
+**4.7.1 Ajax mit JSF**
+
+JSF lädt im Hintergrund die Entprechenden Daten nach und ersetzt die entsprechenden Teile in der View.
+
+**4.7.2 Beispiel**
+
+.. code-block:: HTML
+
+	<f:ajax event="keyup" render="cars" />
+	<h:outputText id="cars" ... ></h:outputText>
+	
+**4.7.3 Events**
+
+action, valueChanged, mouseOut, mouseOver, ...
+
+**4.7.4 JS API**
+
+* onchange="jsf.ajax.request(this,event, {render:'options'});"
+* jsf.js muss im Header eingebunden sein
+* nebst reqest gibt es noch response, addOnError und addOnEvent
+
+
+5 Web Architektur
+=================
+
+**5.0.1 Web App Architektur**
+
+::
+
+	        .-------------------------------------------.
+	        |              HTML / CSS Views             |
+	Browser |------------^--------+---------------------|
+	        |            |        | ViewModels / Contro.|
+	        |            |        |---------------------|
+	        |            '        |       Models        |
+	        |             \       |---------------------|
+	        |              \      |     Data Service    |
+	--------+---------------\-----+----------^----------+----------
+	                         \               |
+	                        html           json
+	                           \             |
+	--------+-------------------v------------v----------+----------
+	        |    Presentation (Web-UI oder Web-API)     |
+	        |-------------------------------------------|
+	Server  |             Business Layer                |
+	        |-------------------------------------------|
+	        |               Data Layer                  |
+	        '-------------------------------------------'
+
+
+**5.0.2 Client- / Serverzentrierte App**
+
+Clientzentriert
+	* Server bietet eine Web-API an
+	* Server ist sehr schlank und kümmert sich nur um Daten
+	* Client besitzt MV* Framework und baut das UI auf
+Serverzentrierte Architktur
+	* Server ist ziemlich gross und rendert das UI
+	* UI wird direkt an den Client gesendet
+	* Clientseitig keine MV* Architktur
+	
+**5.0.3 Web Frameworks**
+
+Action/Request based
+	* Requests lösen Actions aus
+	* HTTP direkt verwendet
+	* Einfacher MVC Control Flow
+Component based
+	* UI aus Komponenten aufgebaut
+	* HTTP wird abstrahiert verwendet
+	* komplexes MVC
+	* Wiedervernwendbare Komponenten
+	
+
+5.1 Patterns
+------------
+
+**5.1.1 Patterns**
+
+Template View
+	Prinzip
+		* Ein Template wird mit Daten gefüllt
+		* Template und Daten werden unabhängig definiert
+	Two Step View
+		1) Model Daten in einen logische Präsentationsstruktur (Formatunabhängig) überführen
+		2) Präsentationsstruktur als spezifisches Format rendern
+	Umsetzung
+		PHP
+			.. code-block:: php
+				
+				<h1><?php echo $title ?></h1>
+				
+				
+		ASP.NET
+			.. code-block:: HTML
+			
+				<h1><asp:Label runat="server" id="title" /></h1>
+				
+		JSF
+			.. code-block:: HTML
+			
+				<h1>#{welcome.title}</h1>
+				
+				
+	EL
+		Expression Language sieht in allen Sprachen unterschiedlich aus, der Funktionsumfang ist meistens jedoch relativ ähnlich. Geboten werden Zugriff auf Model / Daten und UI Features.
+MVC Web
+	Konzept
+		* Unterschied zur klassischen MVC Architktur: UI wird nicht von Controller über Observer über Änderungen informiert
+		* Request / Response basiert -> UI Generation ist Response		
+Front Controller
+	* ein einziger Input Controller, aufgespalten in Handler und Commands
+Page Controller
+	* Ein Controller für jede Web Page
+	
+**5.1.2 ROCCA Architektur**
+
+Nutzung von
+
+* REST
+* HTTP
+* TLS Authentication
+* Cookies nur für Authentifizierung
+
+Beachten von
+
+* Accessibility
+* JS Free usable Frontend
+* No Business Logic duplication
+
+
 
