@@ -1225,3 +1225,45 @@ Beachten von
 
 
 
+6 Client Architektur Frameworks
+===============================
+
+**6.0.1 Botstrap, Modernizr**
+
+Modernizr
+	Feature Detection zur selection was für Funktionen dem Benutzer angeboten werden können und welchen nicht
+Bootstrap
+	Responsive Layout, Komponenten
+	
+	
+**6.0.2 jQuery Mobile**
+
+Einfach Bauen von Apps, die wie native Apps wirken. Übernimmt Routing, Rendering. Touchoptimierung.
+
+
+**6.0.3 MVVM**
+
+Model View ViewModel: Anstelle des Controllers bei MVC tritt ein ViewModel, das Aggregierte und verarbeitete Daten für die View bereithält.
+
+
+**6.0.4 Templating mit Dot.js**
+
+* Im Template werden Platzhalten verwendet.
+* Das Template wird eingelesen
+* Template wird Kompiliert
+* Template wird mit ViewModel "befüllt"
+* View wird gerendert und rausgeschrieben.
+
+
+**6.0.5 Backbone**
+
+Hilft die App zu strukturieren. Bringt Routing, Templatengine, Server Connection Support.
+
+
+
+
+
+
+	
+	
+
