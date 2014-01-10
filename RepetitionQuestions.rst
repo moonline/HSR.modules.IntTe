@@ -520,7 +520,7 @@ Welchen Vorteil bringt Backbone? Was kann man damit machen?
 Plugin Technologien
 ===================
 **7.0.1.**
-Nennen Sie 6 alternative Möglichkeiten zur WebApp-Entwicklung mit Javascript.
+Nennen Sie 4 alternative Möglichkeiten zur WebApp-Entwicklung mit Javascript.
 
 
 Browser Plugins
@@ -546,13 +546,13 @@ Mit welchen Problemen haben Silverlight Plugins zu kämpfen?
 **7.2.3.**
 Welche Architekturvarianten lässt Silverlight zu?
 
-**7.3.4.**
+**7.2.4.**
 [DP] Welche Vorteile bietet eine homogene Server/Client Technologie allgemeint?
 
-**7.3.5.**
+**7.2.5.**
 [DP] Für welche Anwendungen ist Silverlight sicher nicht geeignet?
 
-**7.3.6.**
+**7.2.6.**
 [DP] Wie lässt sich aufbauend auf einer MS SQL Datenbank sehr schnell eine 3-Tier Silverlight Anwendung entwickeln? Wo wird validiert und wie?
 
 Flash

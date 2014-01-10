@@ -1261,9 +1261,203 @@ Hilft die App zu strukturieren. Bringt Routing, Templatengine, Server Connection
 
 
 
+7 Plugin Technologien
+=====================
+
+**7.0.1 JS WebApp Alternativen**
+
+* Native App
+* Browser Plugin
+* Native->JS Compiler
+* JS Erweiterung (TypeScript)
+
+
+7.1 Browser Plugins
+-------------------
+
+**7.1.1 Java Applets**
+
+Vorteile
+	* Entwicklung mit Java
+Nachteile
+	* Sicherheitslöcher
+	* Viele Benutzer erlauben keine Applets mehr
+	* Sicherheitswarnung verwirrt Benutzer
+	* Applet hat zu viele Rechte auf Client
+	* API wird Ende 2013 abgeschaltet
+
+
+**7.1.2 NPAPI**
+
+Alle Plugins, die über die "Netscape Plugin API" laufen werden nicht mehr lauffähig sein (z.B: Java Applets).
+
+
+**7.1.3 Nicht installierte Plugins**
+
+1) Browser zeigt Platzhalter für das Plugin an und meldet ein fehlendes Plugin
+2) Der Benutzer wird aufgefordert das Plugin zu installieren
+3) Die Meldung linkt den Benutzer auf die Downloadseite, wo der Benutzer das Plugin findet
+4) Wird der Browser und das BS unterstützt, kann der Benutzer das Plugin herunterladen und installieren
+5) Der Benutzer kann mit dem Benutzen der Seite mit den Plugin Inhalten fortfahren
+
+
+7.2 Silverlight
+---------------
+
+**7.2.1 Silverlight**
+
+* Databinding, Integration mit exist. .NET Anwendungen
+* Entwickeln von WebAnwendungen mit .NET Skills
+* Transport vielfälltiger als bei HTTP only
+
+
+**7.2.2 SL Probleme**
+
+* Plugin nicht für alle Plattformen verfügbar
+* Business-to-Consumer Plattforms
+* Mobile Plattforms
+* Inhouse APPs
+
+
+**7.2.3 SL Architektur**
+
+* homogen: Server & Client gleiche Technologie
+* heterogen: Server & Client unterschiedlich (Server z.B. REST API)
+
+
+**7.2.4 Vorteile homogene Architektur**
+
+* Entwicklung in einem Guss
+* Engenere Kopplung möglich -> Protokoloptimierungen
+* Kein Zusatzaufwand für API, Technologie übernimmt dies
+
+
+**7.2.5 ungeeignete SL Anwendungen**
+
+* Mobile Web App's
+* Zielgruppe vorwiegend Linux oder Mac (meisst SL Plugin nicht installiert)
+* Schlanke Applikationen
+
+
+**7.2.6 SL Anwendung aufbauen**
+
+* Generieren eines Clients anhand von Database & Models
+* Validiert werden sollte auf allen Layern, Eingabedatenvalidierung erfolg direkt auf dem Client
+
+
+7.3 Flash
+---------
+
+**7.3.1 Flash**
+
+* Flash nutzt nicht die NPAPI sondern die PPAPI
+* Flash wurde vor Allem durch Flash Videos verbreitet -> jeder hatte Flash, endlich konnte man alle Videos abspielen
+* Games
+
+
+**7.3.2 Flash migration**
+
+* Adobe Tools: ActionScript to JS Compilation
+
+
+7.4 Cross-Compilation
+---------------------
+
+**7.4.1 Google Web Toolkit GWT**
+
+* Compiling von Java App to Browser & Locale Specific JS
+* Web UI Class Library
+* Unit Testing
+* Testing without Compiling
+* Navigation & History Managemet
+
+
+**7.4.2 GWT UI**
+
+Es müssen die GWT eigenen UI Klassen verwendet werden, sonst kann die App nicht compiled werden.
+
+
+**7.4.3 GWT RPC**
+
+GWT bietet RPC an, aber nur für ein Subset von Typen.
+
+
+**7.4.4 GWT Einschränkugnen**
+
+* GWT Web UI Beschränkung
+* Kein Multithreading
+* Kein dynamic Class Loading
+* GWT Kompiliert für jeden Browser und jede Lokalisierung eine eigene App -> Neue Browser müssen zuerst von GWT supported werden
+
+
+**7.4.5 GWT Cross-Browser**
+
+Durch die Browser spezifischen Editions werden die einzelnen Editions sehr schlank und laufen optimal im entsprechenden Browser. JQuery schleppt z.B. IE Optimierungen mit sich herum, auch wenn es in einem FF läuft.
+
+
+**7.4.6 Vorteil Cross-Compilation**
+
+* Läuft in fast jedem Browser
+* Benutzer müssen kein Plugin installieren
+* Benutzer blockieren JS eigentlich nie, Plugins jedoch immer mehr
 
 
 
+8 Performance Optimierung
+=========================
+
+**8.0.1 Page Loading**
+
+1) Dokument laden
+2) Dekomprimieren
+3) Lexing
+4) Pasing, DOM Aufbau
+5) Ausführen von Scripts, DOM Manipulation
+6) Layout generation
+7) Rendering
+
+
+**8.0.2 DOM Manipulations**
+
+* Jedes Mal wird der DOM verändert, das Layout angepasst, der RenderTree neu aufgebaut und die Darstellung neu gerendert.
+* Besser wäre das Einfügen von allen Elementen auf's Mal -> nur einmal Rendern
+	* schlecht: create parent, insert parent, add child1, add child2, add child3
+	* gut: create parent, add child1, add child2, add child3, insert parent
 	
 	
+**8.0.3 Element Placement**
+
+a) CSS: Header, damit es vor der Struktur gerendert wird (verhindert Flackern)
+b) LESS: Header, vor Script, damit es bereits geladen wurde
+c) LESS Script: Header, damit das CSS compiled wurde bevor der Content geladen wird
+d) 	I) Domain Logic on startup: Header
+	II) Domain Logic über require.js: Am Ende der Seite
+e) main Script: Ende der Seite
+
+
+**8.0.4 Positioning Alternativen**
+
+HTML bietet das "defer" Attribut, das den Browser dazu anhält, das Skript erst aufzuführen wenn die Seite fertig geparst wurde.
+
+
+**8.0.5 Content First**
+
+* Für das Ausführen der Skripte wird der Content benötigt -> Inhalte sind möglicherweise noch gar nicht vorhanden
+* Parsen der Skripte verzögert den Content.
+
+
+**8.0.6 Performance Tipps**
+
+* Unbenutzten Code (CSS/JS) entfernen
+* Skripts und CSS minifien
+* CSS in header, JS at Bottom
+* CDN (Content Delivery Network) nutzen
+* DOM
+	* DOM Refs in lokale Variablen cachen
+	* DOM nicht iterativ manipulieren
+	
+	
+
+
+
 
