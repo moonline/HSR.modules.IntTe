@@ -1641,6 +1641,64 @@ Inheritance
 		sam.move();
 		tom.move(34);
 
+	
+	TypeScript:
+	
+	.. code-block:: java
+	
+		class Shape {
+			constructor(private color: string) { }
+			getColor() {return this.color}
+		}
+		class Rectangle extends Shape {
+			constructor(color: string, private x: number, private y: number) { 
+				super(color)
+			}
+			getX() {return this.x}
+			getY() {return this.y}
+		}
+		var r = new Rectangle ('g', 9, 19);
+		r.getColor();
+
+		
+	Javascript:
+	
+	.. code-block:: javascript
+	
+		var __extends = this.__extends || function (d, b) {
+			for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+			function __() { this.constructor = d; }
+			__.prototype = b.prototype;
+			d.prototype = new __();
+		};
+		var Shape = (function () {
+			function Shape(color) {
+				this.color = color;
+			}
+			Shape.prototype.getColor = function () {
+				return this.color;
+			};
+			return Shape;
+		})();
+		var Rectangle = (function (_super) {
+			__extends(Rectangle, _super);
+			function Rectangle(color, x, y) {
+				_super.call(this, color);
+				this.x = x;
+				this.y = y;
+			}
+			Rectangle.prototype.getX = function () {
+				return this.x;
+			};
+			Rectangle.prototype.getY = function () {
+				return this.y;
+			};
+			return Rectangle;
+		})(Shape);
+		
+		var r = new Rectangle('g', 9, 19);
+		r.getColor();
+		
 		
 Modules
 	TypeScript:
