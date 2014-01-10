@@ -630,3 +630,5 @@ Wie unterscheidet sich Typescript grundsätzlich von Dart, der von Google entwic
 **9.0.3.**
 Wo liegt der Hauptvorteil von Typescript gegenüber Javascript?
 
+**9.0.4**
+Machen Sie TypeScript/JS Beispiele zu Klassen, Vererbung, ...

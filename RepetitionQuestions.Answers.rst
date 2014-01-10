@@ -3,7 +3,9 @@ HS13 IntTe Repetitionsfragen Antworten
 ======================================
 
 Dieses Dokument wird vorzu erweitert. Ergänzungen und Antworten sind herzlich willkommen.
-Repetitionsfragen: https://github.com/moonline/HSR.modules.IntTe/blob/master/RepetitionQuestions.rst
+Repetitionsfragen: 
+
+https://github.com/moonline/HSR.modules.IntTe/blob/master/RepetitionQuestions.rst
 
 
 1 Java Webtechnologien
@@ -125,7 +127,7 @@ doPost() muss implementiert werden. Die Parameter können über request.getParam
 
 **1.1.7 Content Type**
 
-.. code.block:: java
+.. code-block:: java
 
 	response.setContentType("text/html");
 	
@@ -1477,5 +1479,219 @@ Typescript ist eine Scriptsprache, die zu JS compiliert wird und sich an die Syn
 * Classes, Interfaces
 * Class-based Inheritance
 
+**9.0.4 Beispiele**
+
+Klassen
+	Typecript:
+	
+	.. code-block:: java
+	
+		class Car {
+			name: string;
+			manufacturer: Manufacturer;
+				
+			constructor(name: string, manufacturer: Manufacturer) {
+				this.name = name;
+				this.manufacturer = manufacturer;
+			}
+				
+			getName() {
+				return this.name;
+			}
+			
+			toString() {
+				return this.name+", "+this.manufacturer.toString();
+			}
+		}
+
+		class Manufacturer {
+			name: string;
+			
+			constructor(name: string) {
+				this.name = name;
+			}
+			
+			toString() {
+				return this.name;
+			}
+		}
+
+		var manufacturer1 = new Manufacturer("Volvo");
+		var car1 = new Car("Alpha", manufacturer1);
+
+		alert(car1.toString());
+
+	
+	Javascript:
+	
+	.. code-block:: javascript
+	
+		var Car = (function () {
+			function Car(name, manufacturer) {
+				this.name = name;
+				this.manufacturer = manufacturer;
+			}
+			Car.prototype.getName = function () {
+				return this.name;
+			};
+
+			Car.prototype.toString = function () {
+				return this.name + ", " + this.manufacturer.toString();
+			};
+			return Car;
+		})();
+
+		var Manufacturer = (function() {
+			function Manufacturer(name) {
+				this.name = name;
+			}
+			Manufacturer.prototype.toString() {
+				return this.name;
+			}
+		})();
+
+		var manufacturer1 = new Manufacturer("Volvo");
+		var car1 = new Car("Alpha", manufacturer1);
+
+		alert(car1.toString());
 
 
+Inheritance
+	TypeScript:
+	
+	.. code-block:: java
+		
+		class Animal {
+			constructor(public name: string) { }
+			move(meters: number) {
+				alert(this.name + " moved " + meters + "m.");
+			}
+		}
+
+		class Snake extends Animal {
+			constructor(name: string) { super(name); }
+			move() {
+				alert("Slithering...");
+				super.move(5);
+			}
+		}
+
+		class Horse extends Animal {
+			constructor(name: string) { super(name); }
+			move() {
+				alert("Galloping...");
+				super.move(45);
+			}
+		}
+
+		var sam = new Snake("Sammy the Python");
+		var tom: Animal = new Horse("Tommy the Palomino");
+
+		sam.move();
+		tom.move(34);
+
+		
+	Javascript:
+	
+	.. code-block:: javascript
+	
+		var __extends = this.__extends || function (d, b) {
+			for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+			function __() { this.constructor = d; }
+			__.prototype = b.prototype;
+			d.prototype = new __();
+		};
+		var Animal = (function () {
+			function Animal(name) {
+				this.name = name;
+			}
+			Animal.prototype.move = function (meters) {
+				alert(this.name + " moved " + meters + "m.");
+			};
+			return Animal;
+		})();
+
+		var Snake = (function (_super) {
+			__extends(Snake, _super);
+			function Snake(name) {
+				_super.call(this, name);
+			}
+			Snake.prototype.move = function () {
+				alert("Slithering...");
+				_super.prototype.move.call(this, 5);
+			};
+			return Snake;
+		})(Animal);
+
+		var Horse = (function (_super) {
+			__extends(Horse, _super);
+			function Horse(name) {
+				_super.call(this, name);
+			}
+			Horse.prototype.move = function () {
+				alert("Galloping...");
+				_super.prototype.move.call(this, 45);
+			};
+			return Horse;
+		})(Animal);
+
+		var sam = new Snake("Sammy the Python");
+		var tom = new Horse("Tommy the Palomino");
+
+		sam.move();
+		tom.move(34);
+
+		
+Modules
+	TypeScript:
+	
+	.. code-block:: java
+	
+		module Sayings {
+			export class Greeter {
+				greeting: string;
+				constructor(message: string) {
+					this.greeting = message;
+				}
+				greet() {
+					return "Hello, " + this.greeting;
+				}
+			}
+		}
+		var greeter = new Sayings.Greeter("world");
+
+		var button = document.createElement('button');
+		button.textContent = "Say Hello";
+		button.onclick = function() {
+			alert(greeter.greet());
+		};
+
+		document.body.appendChild(button);
+
+		
+	Javascript:
+	
+	.. code-block:: javascript
+	
+		var Sayings;
+		(function (Sayings) {
+			var Greeter = (function () {
+				function Greeter(message) {
+					this.greeting = message;
+				}
+				Greeter.prototype.greet = function () {
+					return "Hello, " + this.greeting;
+				};
+				return Greeter;
+			})();
+			Sayings.Greeter = Greeter;
+		})(Sayings || (Sayings = {}));
+		var greeter = new Sayings.Greeter("world");
+
+		var button = document.createElement('button');
+		button.textContent = "Say Hello";
+		button.onclick = function () {
+			alert(greeter.greet());
+		};
+
+		document.body.appendChild(button);
