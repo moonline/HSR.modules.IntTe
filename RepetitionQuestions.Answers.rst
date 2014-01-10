@@ -1457,7 +1457,25 @@ HTML bietet das "defer" Attribut, das den Browser dazu anhält, das Skript erst 
 	* DOM nicht iterativ manipulieren
 	
 	
+9 Typescript
+============
 
+**9.0.1 Typescript**
+
+Typescript ist eine Scriptsprache, die zu JS compiliert wird und sich an die Syntax zukünftiger Emacscript Drafts hält. 
+
+
+**9.0.2 Dart**
+
+* Dart ist eine komplett eigene Sprache, für die es auch einen eigene Laufzeitumgebung (DartVM) gibt. Dart kann allerdings auch nach JS Cross-compiled werden.
+* Für Typescript wird keine eigene Laufzeitumgebung benötigt da es darauf ausgelegt ist, nach JS compiliert zu werden.
+
+
+**9.0.3 Vorteile**
+
+* Static Type checking
+* Classes, Interfaces
+* Class-based Inheritance
 
 
 
